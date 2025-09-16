@@ -14,13 +14,13 @@ int main() {
 
    
     for (i = 0; i < n; i++) {
-        printf("\nDigite o nom do produto %d: ", i+1);
+        printf("\nDigite o nome do produto %d: ", i+1);
         scanf(" %[^\n]", nom[i]);  
 
-        printf("Digite o preco no mes anterior (R$): ");
+        printf("Digite o preço no mês anterior (R$): ");
         scanf("%f", &preco_ant[i]);
 
-        printf("Digite o preco no mes atual (R$): ");
+        printf("Digite o preço no mês atual (R$): ");
         scanf("%f", &preco_atu[i]);
     }
 
@@ -42,13 +42,13 @@ int main() {
     }
 
     
-    printf("\n===== RELATORIO DE PRECOS =====\n");
+    printf("\n===== RELATORIO DE PREÇOS =====\n");
     for (i = 0; i < n; i++) {
         printf("\nProduto: %s\n", nom[i]);
-        printf("Preco anterior: R$ %.2f\n", preco_ant[i]);
-        printf("Preco atual:    R$ %.2f\n", preco_atu[i]);
-        printf("Variacao: %.2f%%\n", vari[i]);
-        printf("Situacao: %s\n", sit[i]);
+        printf("Preço anterior: R$ %.2f\n", preco_ant[i]);
+        printf("Preço atual:    R$ %.2f\n", preco_atu[i]);
+        printf("Variaçao: %.2f%%\n", vari[i]);
+        printf("Situaçao: %s\n", sit[i]);
         printf("------------------------------\n");
     }
 
