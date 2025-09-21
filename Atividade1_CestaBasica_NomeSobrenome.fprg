@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+  <function name="Main" type="None" variable="">
+    <parameters/>
+    <body>
+      <declare name="n, i" type="Integer" array="False" size=""/>
+      <output expression="&quot;Digite a quantidade de produtos que deseja analisar: &quot;" newline="True"/>
+      <input variable="n"/>
+
+      <!-- Declaração de vetores -->
+      <declare name="nome" type="String" array="True" size="n"/>
+      <declare name="preco_anterior" type="Real" array="True" size="n"/>
+      <declare name="preco_atual" type="Real" array="True" size="n"/>
+      <declare name="variacao" type="Real" array="True" size="n"/>
+      <declare name="situacao" type="String" array="True" size="n"/>
+
+      <!-- Entrada dos dados -->
+      <for variable="i" start="0" end="n-1" step="1">
+        <output expression="&quot;Digite o nome do produto &quot; + (i+1)" newline="True"/>
+        <input variable="nome[i]"/>
+        <output expression="&quot;Digite o preco no mes anterior (R$): &quot;" newline="True"/>
+        <input variable="preco_anterior[i]"/>
+        <output expression="&quot;Digite o preco no mes atual (R$): &quot;" newline="True"/>
+        <input variable="preco_atual[i]"/>
+      </for>
+
+      <!-- Processamento -->
+      <for variable="i" start="0" end="n-1" step="1">
+        <assign variable="variacao[i]" expression="((preco_atual[i] - preco_anterior[i]) / preco_anterior[i]) * 100"/>
+        <if expression="variacao[i] &gt; 0">
+          <then>
+            <if expression="variacao[i] &gt; 10">
+              <then>
+                <assign variable="situacao[i]" expression="&quot;AUMENTO ABUSIVO&quot;"/>
+              </then>
+              <else>
+                <assign variable="situacao[i]" expression="&quot;AUMENTO&quot;"/>
+              </else>
+            </if>
+          </then>
+          <else>
+            <if expression="variacao[i] &lt; 0">
+              <then>
+                <assign variable="situacao[i]" expression="&quot;QUEDA&quot;"/>
+              </then>
+              <else>
+                <assign variable="situacao[i]" expression="&quot;ESTAVEL&quot;"/>
+              </else>
+            </if>
+          </else>
+        </if>
+      </for>
+
+      <!-- Saída dos dados -->
+      <output expression="&quot;===== RELATORIO DE PRECOS =====&quot;" newline="True"/>
+      <for variable="i" start="0" end="n-1" step="1">
+        <output expression="&quot;Produto: &quot; + nome[i]" newline="True"/>
+        <output expression="&quot;Preco anterior: R$ &quot; + preco_anterior[i]" newline="True"/>
+        <output expression="&quot;Preco atual: R$ &quot; + preco_atual[i]" newline="True"/>
+        <output expression="&quot;Variacao: &quot; + variacao[i] + &quot;%&quot;" newline="True"/>
+        <output expression="&quot;Situacao: &quot; + situacao[i]" newline="True"/>
+        <output expression="&quot;------------------------------&quot;" newline="True"/>
+      </for>
+
+    </body>
+  </function>
+</flowgorithm>
